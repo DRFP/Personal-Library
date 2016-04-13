@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
+using static Library.Configuration;
+using static Library.SQLiteManager;
 
 namespace Base {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application {
+        public App() { Configure(); }
+
+        private async void Configure() {
+            if (!File.Exists(DatabaseName)) await CreateDatabase();
+        }
     }
 }

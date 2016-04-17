@@ -1,12 +1,37 @@
 ﻿<UserControl x:Class="Base.UCBookInformation"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Base"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+             mc:Ignorable="d"
+             d:DesignWidth="920" d:DesignHeight="196">
+
+    <Grid x:Name="grdBase" Width="920" Height="196">
+        <Image x:Name="imgThumbnail" HorizontalAlignment="Left" VerticalAlignment="Top" Width="119" Height="177" Margin="9,10,0,0"
+               Stretch="Fill"/>
+        <TextBlock x:Name="txbTitle" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,4,0,0" FontFamily="Calibri Light"
+                   FontSize="22" TextWrapping="Wrap"/>
+        <TextBlock x:Name="txbDescription" HorizontalAlignment="Left" VerticalAlignment="Top" Width="770" Height="35" Margin="140,38,0,0"
+                   FontFamily="Calibri Light" FontSize="14" TextWrapping="Wrap" TextAlignment="Justify"/>
+        <TextBlock x:Name="txbAuthor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="770" Height="18" Margin="140,83,0,0"
+                   FontFamily="Calibri Light" FontSize="14" TextWrapping="Wrap" TextAlignment="Justify"/>
+        <TextBlock x:Name="txbPublisher" HorizontalAlignment="Left" VerticalAlignment="Top" Width="770" Height="18" Margin="140,106,0,0"
+                   FontFamily="Calibri Light" FontSize="14" TextWrapping="Wrap" TextAlignment="Justify"/>
+        <TextBlock x:Name="txbPublishedDate" HorizontalAlignment="Left" VerticalAlignment="Top" Width="770" Height="18"
+                   Margin="141,127,0,0" FontFamily="Calibri Light" FontSize="14" TextWrapping="Wrap" TextAlignment="Justify"/>
+        <TextBlock x:Name="txbPageCount" HorizontalAlignment="Left" VerticalAlignment="Top" Width="770" Height="18" Margin="140,148,0,0"
+                   FontFamily="Calibri Light" FontSize="14" TextWrapping="Wrap" TextAlignment="Justify"/>
+        <TextBlock x:Name="txbRating" HorizontalAlignment="Left" VerticalAlignment="Top" Width="770" Height="18" Margin="140,171,0,0"
+                   FontFamily="Calibri Light" FontSize="14" TextWrapping="Wrap" TextAlignment="Justify"/>
+        <TextBlock x:Name="txbInformationLink" HorizontalAlignment="Left" VerticalAlignment="Top" Width="113" Height="20"
+                   Margin="754,82,0,0" FontFamily="Calibri Light" FontSize="14" Text="More information | " TextWrapping="Wrap"
+                   TextAlignment="Justify" Foreground="#FF0055D4"/>
+        <TextBlock x:Name="txbPreviewLink" HorizontalAlignment="Left" VerticalAlignment="Top" Width="46" Height="20" Margin="866,82,0,0"
+                   FontFamily="Calibri Light" FontSize="14" Text="Preview" TextWrapping="Wrap" TextAlignment="Justify"
+                   Foreground="#FF0055D4"/>
+        <ComboBox x:Name="cmbShelves" HorizontalAlignment="Left" VerticalAlignment="Top" Width="280" Margin="575,107,0,0"/>
+        <Button x:Name="btnAdd" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="22" Margin="860,107,0,0"
+                Content="Add" Click="btnAdd_Click"/>
     </Grid>
 </UserControl>

@@ -5,8 +5,106 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Base"
         mc:Ignorable="d"
-        Title="Dashboard" Height="300" Width="300">
-    <Grid>
-        
+        Title="Dashboard" Width="1200" Height="620" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+
+    <Grid x:Name="grdBase">
+        <Grid x:Name="grdMenu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="258" Height="620">
+            <Grid.Background>
+                <LinearGradientBrush MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#FF0055D4" Offset="0.102"/>
+                    <GradientStop Color="#FF0055D4" Offset="1"/>
+                    <GradientStop Color="#FF006BC3"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <TextBlock x:Name="txbLogo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,-2,0,0"
+                       FontFamily="/Library;Component/Resources/#Wolf in the City" FontSize="65" Text="Personal Library"
+                       Foreground="White"/>
+
+            <Grid x:Name="grdSeachBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="230" Height="25" Margin="14,78,0,0">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Library;Component/Resources/SearchBox.png"/>
+                </Grid.Background>
+
+                <TextBox x:Name="tbxSearch" HorizontalAlignment="Left" VerticalAlignment="Top" Width="212" Height="17" Margin="8,6,0,0"
+                         FontFamily="Calibri Light" Text="Find a book..." Foreground="#FFA0A0A0" BorderThickness="0"
+                         KeyDown="tbxSearch_KeyDown"/>
+            </Grid>
+
+            <TextBlock x:Name="txbShelves" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,119,0,0"
+                       FontFamily="Calibri Light" FontSize="20" Text="Shelves" Foreground="White"/>
+
+            <Image x:Name="imgAddShelf" HorizontalAlignment="Left" VerticalAlignment="Top" Width="18" Height="18" Margin="81,124,0,0"
+                   Source="/Library;Component/Resources/Add.png" MouseUp="imgAddShelf_MouseUp">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="0" Color="White" Opacity="1" BlurRadius="5"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+            <WrapPanel x:Name="wplShelves" HorizontalAlignment="Left" VerticalAlignment="Top" Width="229" Height="379"
+                       Margin="14,148,0,0"/>
+
+            <Grid x:Name="grdNewShelf" HorizontalAlignment="Left" VerticalAlignment="Top" Width="230" Height="58" Margin="14,552,0,0"
+                  Visibility="Collapsed">
+                <TextBlock x:Name="txbNewShelf" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,1,0,0"
+                           FontFamily="Calibri Light" FontSize="20" Text="New Shelf" Foreground="White"/>
+
+                <Grid x:Name="grdNewShelfBox"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="230" Height="25"
+                       Margin="0,31,0,0">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/Library;Component/Resources/SearchBox.png"/>
+                    </Grid.Background>
+
+                    <TextBox x:Name="tbxNewShelf" HorizontalAlignment="Left" VerticalAlignment="Top" Width="212" Height="17"
+                             Margin="8,6,0,0" FontFamily="Calibri Light" Text="Enter the new shelf name.." Foreground="#FFA0A0A0"
+                             BorderThickness="0" KeyDown="tbxNewShelf_KeyDown"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="grdSearchResults" HorizontalAlignment="Left" VerticalAlignment="Top" Width="942" Height="622" Margin="258,-2,0,0">
+            <ScrollViewer x:Name="scrSearchedBooks" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"
+                          Margin="0,27,0,0" Visibility="Visible">
+                <WrapPanel x:Name="wplSearchedBooks" HorizontalAlignment="Left" VerticalAlignment="Top" Width="922" Height="10000"/>
+            </ScrollViewer>
+        </Grid>
+
+        <Image x:Name="imgMinimize" HorizontalAlignment="Left" VerticalAlignment="Top" Width="28" Height="25" Margin="1142,0,0,0"
+               MouseUp="imgMinimize_MouseUp">
+            <Image.Style>
+                <Style TargetType="{x:Type Image}">
+                    <Setter Property="Source" Value="/Library;Component/Resources/Minimize.png"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Source" Value="/Library;Component/Resources/Minimize-Hover.png"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+
+        <Image x:Name="imgClose" HorizontalAlignment="Left" VerticalAlignment="Top" Width="28" Height="25" Margin="1172,0,0,0"
+               MouseUp="imgClose_MouseUp">
+            <Image.Style>
+                <Style TargetType="{x:Type Image}">
+                    <Setter Property="Source" Value="/Library;Component/Resources/Close.png"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Source" Value="/Library;Component/Resources/Close-Hover.png"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
     </Grid>
 </Window>

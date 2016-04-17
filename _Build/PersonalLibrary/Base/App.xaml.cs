@@ -8,7 +8,7 @@ namespace Base {
         public App() { Configure(); }
 
         private async void Configure() {
-            if (!File.Exists(DatabaseName)) await CreateDatabase();
+            if (!File.Exists(databaseName)) await CreateDatabase();
         }
     }
 }

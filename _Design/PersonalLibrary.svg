@@ -7,6 +7,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
@@ -25,9 +26,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.41053452"
-     inkscape:cx="386.33252"
-     inkscape:cy="762.20392"
+     inkscape:zoom="1"
+     inkscape:cx="-116.89699"
+     inkscape:cy="914.0892"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -44,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -59,70 +60,189 @@
        height="681.75488"
        x="-641.95319"
        y="-32.719154" />
-    <g
-       id="g3388"
-       transform="translate(-12.226569,-3.20392)">
-      <rect
-         y="26.362206"
-         x="-115.44091"
-         height="570"
-         width="1000"
-         id="rect3338"
-         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0" />
-      <rect
-         y="26.362206"
-         x="123"
-         height="570"
-         width="5"
-         id="rect3346"
-         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0" />
-      <g
-         id="g3368">
-        <rect
-           style="fill:#ff2a2a;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0"
-           id="rect3344"
-           width="51"
-           height="28.020569"
-           x="759"
-           y="26.362206" />
-        <rect
-           style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0"
-           id="rect3348"
-           width="17.506367"
-           height="2.1596475"
-           x="775.74683"
-           y="39.292667" />
-      </g>
-      <g
-         id="g3362">
-        <rect
-           y="26.362206"
-           x="817"
-           height="28.020569"
-           width="51"
-           id="rect3342"
-           style="fill:#ff2a2a;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0" />
-        <g
-           id="g3358"
-           transform="translate(2.471964e-6,2.6505758e-5)">
-          <rect
-             transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)"
-             style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0"
-             id="rect3354"
-             width="17.506367"
-             height="2.1596475"
-             x="615.53192"
-             y="-568.26965" />
-          <rect
-             y="-625.36493"
-             x="-575.94299"
-             height="2.1596475"
-             width="17.506367"
-             id="rect3356"
-             style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0"
-             transform="matrix(-0.70710678,0.70710678,-0.70710678,-0.70710678,0,0)" />
-        </g>
-      </g>
-    </g>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0"
+       id="rect3338"
+       width="1200"
+       height="620"
+       x="-227.66748"
+       y="-1.841713" />
+    <image
+       y="-28.084686"
+       x="942.92273"
+       id="image4168"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAgCAYAAAB6kdqOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAAQ6wAAEOsBUJTofAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAGBSURB
+VFiF7ZXNSkMxEIXPtNpdHqLZ6qqkDyLIFe1CQUF05S+CiC6KIPiDK0FBtEKtBsFHuA9wpzvvNn2I
+QguCjpsWgihyb6mrfMs5k5NDSCZAIBAIBEYnTdNSHMcTv+lxHE+kaVrK413IusBaW+z1eg9KqdZP
+oay1RaVUo9/vPzHz5FgDiUhBa90iojkAs0qpe2tt0Q+jtW4AWAAwA6ApIpn2yNRMRJ9ElHqlmtb6
+VkQKIkLlcvkKQM3T34joM9MeWZqHMHMdwIEX9A7Au4isem1nxpjdrN65AgFAkiTHRLT/i3xhjNnO
+45s7EAAw8wmAPb8mIpfVanUzr2fmV/anYWE0y9yrkyQ5xrfTAQAR2WDm838NxMx1//6IyB0RXXst
+W8x8+i+B2u32EbwXBqBhjFmpVCprInLj1XeY+XCsgQbzZsorNZ1zy4P5JJ1OZx1A09Onxz4YnXPz
+IvIM4KXb7S5FUfQx1KMo+nDOLQJ4BPAKoJZ1MOZinJ9rIBAIBL7xBayEoC6d72m3AAAAAElFTkSu
+QmCC
+"
+       preserveAspectRatio="none"
+       height="26.181818"
+       width="29.454544" />
+    <image
+       y="-1.9028683"
+       x="942.92273"
+       id="image4179"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAgCAYAAAB6kdqOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAAQ6wAAEOsBUJTofAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFySURB
+VFiF7ZZBqwFRFMd/45IvwsbnkBJlZUtSktJssFBspihsbFhJsrOR8m34GlbTjLc4aXhouiPeS/Pf
+TPece+/5de49Z65xTqXO/CNF/hrgt0IgP4VAfgqB/PQlQLEYKPXcr5TM+QiQUjAcwmTyGOraH42+
+GSgSgfEYslnIZGAwuIVSSmy5HKTTMBrJmrcBuS4cj944nwfLkqCGAb2e2C46HGSNhvRzOptJJup1
+GRcKEtS2oVj05i2XMJ9rb28E/tubJtRqj32rlRxXAAUv++kUFot7+3odGOY1oGc6v/a8Cg5kmlCt
+3ttLJeh0PgzUbN7en+0WNhtvXC5DqxVoa/0qazS8CgPY7aDfl6MyDK/SKhU4nbQrTb8xJhLeeL+X
+3uO6AmRZYrsomdRujHoZcl1ot+WrFHS74Die33HEZhgQj8td0myMwfpQLCaBrmGupZRkxra1t9a/
+Q+AfyHGew/roS95Db1QI5KcQyE8hkJ9+AB+paCbVQkjOAAAAAElFTkSuQmCC
+"
+       preserveAspectRatio="none"
+       height="26.181818"
+       width="29.454544" />
+    <image
+       y="-28.084686"
+       x="913.4682"
+       id="image4190"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAgCAYAAAB6kdqOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAAQ6wAAEOsBUJTofAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABiSURB
+VFiF7dExCoAwDIXhRAShUy+RC+nmAR29UC/RqVBwcHXsG1zK/83J45GYAQCAubm6UErZWmvryGxK
+6YmIruQPBX/VWi933wdnbzM7lPxFLfQ3+UI551N5mV4JAADM7QWHShQyYzJWBgAAAABJRU5ErkJg
+gg==
+"
+       preserveAspectRatio="none"
+       height="26.181818"
+       width="29.454544" />
+    <image
+       y="-1.9028683"
+       x="913.4682"
+       id="image4201"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAgCAYAAAB6kdqOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAAQ6wAAEOsBUJTofAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAB0SURB
+VFiF7daxEcAgCIVhhCziMK7tBO7AJJj0aZ4UuVC8r0b972hsa61bCtG/A94YhDAIYRDCIIRBCIOQ
+K3sgImTvfTSrqmJm3wbNOcXdj2Z77zLGSN1fbmUt+0ErtzIzSz+SUW5lDEIYhDAIYRDCIIRByAOT
+uBkmQC62BgAAAABJRU5ErkJggg==
+"
+       preserveAspectRatio="none"
+       height="26.181818"
+       width="29.454544" />
+    <rect
+       style="fill:#0055d4;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0"
+       id="rect4212"
+       width="261.79727"
+       height="620.56805"
+       x="-228.01175"
+       y="-3.0736425" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4204"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Wolf in the City';-inkscape-font-specification:'Wolf in the City Italic';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(1.633012,0,0,1.633012,-416.59913,-209.49083)"><flowRegion
+         id="flowRegion4206"><rect
+           id="rect4208"
+           width="385.50439"
+           height="229.18707"
+           x="125.75906"
+           y="116.80882"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Wolf in the City';-inkscape-font-specification:'Wolf in the City Italic';fill:#ffffff" /></flowRegion><flowPara
+         id="flowPara4210">Personal Library</flowPara></flowRoot>    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0"
+       id="rect4214"
+       width="232.88835"
+       height="24.681684"
+       x="-213.20667"
+       y="76.848"
+       ry="12.340842"
+       inkscape:export-filename="C:\Users\nsisadev\Documents\GitHub\Repositories\Personal-Library\_Design\Boxes\SearchBox.png"
+       inkscape:export-xdpi="110"
+       inkscape:export-ydpi="110" />
+    <rect
+       inkscape:export-ydpi="110"
+       inkscape:export-xdpi="110"
+       inkscape:export-filename="C:\Users\nsisadev\Documents\GitHub\Repositories\Personal-Library\_Design\Boxes\ShelfBox.png"
+       ry="12.340842"
+       y="-261.64368"
+       x="126.46033"
+       height="24.681684"
+       width="232.88835"
+       id="rect4216"
+       style="fill:#0044aa;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0" />
+    <rect
+       style="fill:#0044aa;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0"
+       id="rect4218"
+       width="232.88835"
+       height="24.681684"
+       x="-213.20667"
+       y="208.48366"
+       ry="12.340842"
+       inkscape:export-filename="C:\Users\nsisadev\Documents\GitHub\Repositories\Personal-Library\_Design\Boxes\SearchBox.png"
+       inkscape:export-xdpi="110"
+       inkscape:export-ydpi="110" />
+    <rect
+       inkscape:export-ydpi="110"
+       inkscape:export-xdpi="110"
+       inkscape:export-filename="C:\Users\nsisadev\Documents\GitHub\Repositories\Personal-Library\_Design\Boxes\SearchBox.png"
+       ry="12.340842"
+       y="239.04198"
+       x="-213.20667"
+       height="24.681684"
+       width="232.88835"
+       id="rect4220"
+       style="fill:#0044aa;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0" />
+    <rect
+       style="fill:#0044aa;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0"
+       id="rect4222"
+       width="232.88835"
+       height="24.681684"
+       x="-213.20667"
+       y="269.60019"
+       ry="12.340842"
+       inkscape:export-filename="C:\Users\nsisadev\Documents\GitHub\Repositories\Personal-Library\_Design\Boxes\SearchBox.png"
+       inkscape:export-xdpi="110"
+       inkscape:export-ydpi="110" />
+    <rect
+       inkscape:export-ydpi="110"
+       inkscape:export-xdpi="110"
+       inkscape:export-filename="C:\Users\nsisadev\Documents\GitHub\Repositories\Personal-Library\_Design\Boxes\SearchBox.png"
+       ry="12.340842"
+       y="300.15848"
+       x="-213.20667"
+       height="24.681684"
+       width="232.88835"
+       id="rect4224"
+       style="fill:#0044aa;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0" />
+    <rect
+       style="fill:#0044aa;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0"
+       id="rect4226"
+       width="232.88835"
+       height="24.681684"
+       x="-213.20667"
+       y="330.7168"
+       ry="12.340842"
+       inkscape:export-filename="C:\Users\nsisadev\Documents\GitHub\Repositories\Personal-Library\_Design\Boxes\SearchBox.png"
+       inkscape:export-xdpi="110"
+       inkscape:export-ydpi="110" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:24.58686829px;line-height:125%;font-family:Calibri;-inkscape-font-specification:'Calibri Light';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-209.86134"
+       y="168.55823"
+       id="text4228"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4230"
+         x="-209.86134"
+         y="168.55823"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Calibri;-inkscape-font-specification:'Calibri Light'">Shelves</tspan></text>
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0"
+       d="m -85.39698,-102.60367 c -5.05636,0 -9.12696,4.0706 -9.12696,9.12696 0,5.05635 4.0706,9.12695 9.12696,9.12695 5.05635,0 9.12695,-4.0706 9.12695,-9.12695 0,-5.05636 -4.0706,-9.12696 -9.12695,-9.12696 z m -0.85718,4.5509 1.71603,0 c 0.15788,0 0.28516,0.12727 0.28516,0.28516 l 0,3.14688 3.14688,0 c 0.15788,0 0.28516,0.12728 0.28516,0.28517 l 0,1.71602 c 0,0.15787 -0.12728,0.28684 -0.28516,0.28684 l -3.14688,0 0,3.1452 c 0,0.15789 -0.12728,0.28684 -0.28516,0.28684 l -1.71603,0 c -0.15788,0 -0.28683,-0.12895 -0.28683,-0.28684 l 0,-3.1452 -3.14689,0 c -0.15788,0 -0.28516,-0.12897 -0.28516,-0.28684 l 0,-1.71602 c 0,-0.15789 0.12728,-0.28517 0.28516,-0.28517 l 3.14689,0 0,-3.14688 c 0,-0.15789 0.12895,-0.28516 0.28683,-0.28516 z"
+       id="rect4242"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\nsisadev\Documents\GitHub\Repositories\Personal-Library\_Design\Buttons\Add.png"
+       inkscape:export-xdpi="110"
+       inkscape:export-ydpi="110" />
   </g>
 </svg>

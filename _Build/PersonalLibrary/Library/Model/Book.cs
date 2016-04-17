@@ -11,11 +11,12 @@ namespace Library.Model {
         public string booDescription { get; set; }
         public string booAuthor { get; set; }
         public string booPublisher { get; set; }
-        public DateTime booPublishedDate { get; set; }
+        public string booPublishedDate { get; set; }
         public int booPageCount { get; set; }
         public double booRating { get; set; }
         public int booRatingsCount { get; set; }
         public string booInformationURL { get; set; }
         public string booPreviewURL { get; set; }
+        public string booThumbnail { get; set; }
     }
 }

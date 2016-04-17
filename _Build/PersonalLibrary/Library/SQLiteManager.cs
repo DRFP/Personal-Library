@@ -12,7 +12,6 @@ namespace Library {
 
         public static async Task CreateDatabase() {
             await connection.CreateTablesAsync<Book, Shelf>();
-            await connection.InsertAllAsync(Books());
             await connection.InsertAllAsync(Shelves());
         }
     }

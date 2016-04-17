@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Model\Book.cs" />
@@ -97,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Resource Include="Resources\Wolf in the City.ttf" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -105,12 +107,18 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Minimize.png" />
     <Resource Include="Resources\Close.png" />
+    <Resource Include="Resources\Close-Hover.png" />
+    <Resource Include="Resources\Minimize.png" />
+    <Resource Include="Resources\Minimize-Hover.png" />
+    <Resource Include="Resources\SearchBox.png" />
+    <Resource Include="Resources\ShelfBox.png" />
+    <Resource Include="Resources\Add.png" />
     <Content Include="sqlite3.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

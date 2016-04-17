@@ -6,6 +6,5 @@ namespace Library.Model {
         [PrimaryKey, AutoIncrement]
         public int slfID { get; set; }
         public string slfName { get; set; }
-        public string slfDescription { get; set; }
     }
 }

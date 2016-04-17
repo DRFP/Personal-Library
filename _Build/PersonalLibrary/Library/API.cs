@@ -34,7 +34,7 @@ namespace Library {
                         booRatingsCount = (book.VolumeInfo.RatingsCount.HasValue) ? book.VolumeInfo.RatingsCount.Value : 0,
                         booInformationLink = book.VolumeInfo.InfoLink,
                         booPreviewLink = book.VolumeInfo.PreviewLink,
-                        booThumbnail = book.VolumeInfo.ImageLinks.Thumbnail
+                        booThumbnail = (book.VolumeInfo.ImageLinks != null) ? book.VolumeInfo.ImageLinks.Thumbnail : null
                     });
                 }
             }

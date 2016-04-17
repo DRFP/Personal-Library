@@ -1,7 +1,4 @@
-﻿using Google.Apis.Books.v1;
-using Google.Apis.Services;
-
-namespace Library {
+﻿namespace Library {
     public class Configuration {
         public const string applicationName = "PersonalLibrary";
         public const string apiKey = "AIzaSyCeOsGdlQrvY5KpiHlJAA9m5Fn_ANhcR0I";

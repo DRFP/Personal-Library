@@ -15,7 +15,8 @@ namespace Base {
             Margin = new Thickness(3, 0, 0, 0);
             this.book = book;
 
-            imgThumbnail.Source = new BitmapImage(new Uri(book.booThumbnail));
+            if (book.booThumbnail != null) imgThumbnail.Source = new BitmapImage(new Uri(book.booThumbnail));
+
             txbTitle.Text = book.booTitle;
             txbDescription.Text = book.booDescription;
             txbAuthor.Text = $"Author: {book.booAuthor}";

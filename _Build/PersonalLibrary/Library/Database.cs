@@ -13,7 +13,7 @@ namespace Library {
                 booDescription = "Description",
                 booAuthor = "Author",
                 booPublisher = "Publisher",
-                booPublishedDate = DateTime.Now,
+                booPublishedDate = DateTime.Now.ToString(),
                 booPageCount = 100,
                 booRating = 5.0,
                 booRatingsCount = 1000,
@@ -27,9 +27,9 @@ namespace Library {
         public static List<Shelf> Shelves() {
             var shelves = new List<Shelf>();
 
-            shelves.Add(new Shelf { slfName = "Reading now", slfDescription = "" });
-            shelves.Add(new Shelf { slfName = "To read", slfDescription = "" });
-            shelves.Add(new Shelf { slfName = "Have read", slfDescription = "" });
+            shelves.Add(new Shelf { slfName = "Reading now" });
+            shelves.Add(new Shelf { slfName = "To read" });
+            shelves.Add(new Shelf { slfName = "Have read" });
 
             return shelves;
         }

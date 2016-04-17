@@ -1,5 +1,4 @@
 ﻿using SQLite;
-using System;
 
 namespace Library.Model {
     [Table("Books")]
@@ -15,8 +14,8 @@ namespace Library.Model {
         public int booPageCount { get; set; }
         public double booRating { get; set; }
         public int booRatingsCount { get; set; }
-        public string booInformationURL { get; set; }
-        public string booPreviewURL { get; set; }
+        public string booInformationLink { get; set; }
+        public string booPreviewLink { get; set; }
         public string booThumbnail { get; set; }
     }
 }

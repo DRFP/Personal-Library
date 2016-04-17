@@ -8,7 +8,7 @@ namespace Library {
     public class SQLiteManager {
         private static SQLiteAsyncConnection connection;
 
-        static SQLiteManager() { connection = new SQLiteAsyncConnection(DatabaseName); }
+        static SQLiteManager() { connection = new SQLiteAsyncConnection(databaseName); }
 
         public static async Task CreateDatabase() {
             await connection.CreateTablesAsync<Book, Shelf>();

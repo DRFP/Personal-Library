@@ -11,8 +11,13 @@ namespace Library {
     public static class API {
         private static SQLiteAsyncConnection connection = new SQLiteAsyncConnection(databaseName);
 
+        public static async Task<List<Book>> GetBooks(int shelfID) {
+            return await connection.Table<Book>().Where(b => b.slfID.Equals(shelfID)).ToListAsync();
+        }
+
         public static async Task<List<Book>> GetSearchedBooks(string searchText) {
             var books = new List<Book>();
+            long bookISBN = 0;
 
             var booksService = new BooksService(new BaseClientService.Initializer {
                 ApplicationName = applicationName,
@@ -23,7 +28,12 @@ namespace Library {
 
             if (_books != null && _books.Items != null) {
                 foreach (var book in _books.Items) {
+                    foreach (var industryIdentifier in book.VolumeInfo.IndustryIdentifiers) {
+                        if (industryIdentifier.Type == "ISBN_13") bookISBN = long.Parse(industryIdentifier.Identifier);
+                    }
+
                     books.Add(new Book() {
+                        booISBN = bookISBN,
                         booTitle = book.VolumeInfo.Title,
                         booDescription = book.VolumeInfo.Description,
                         booAuthor = (book.VolumeInfo.Authors != null) ? book.VolumeInfo.Authors.FirstOrDefault() : "",
@@ -46,6 +56,7 @@ namespace Library {
 
         public static async Task<int> AddBook(Book book, int shelfID) {
             await connection.InsertAsync(new Book() {
+                booISBN = book.booISBN,
                 slfID = shelfID,
                 booTitle = book.booTitle,
                 booDescription = book.booDescription,
@@ -63,7 +74,10 @@ namespace Library {
             return 0;
         }
 
+        public static async void RemoveBook(Book book) { await connection.DeleteAsync(book); }
+
         public static async void AddShelf(string shelfName) { await connection.InsertAsync(new Shelf() { slfName = shelfName }); }
+
         public static async void EditShelf(int shelfID, string shelfName) {
             var shelf = await connection.Table<Shelf>().Where(s => s.slfID.Equals(shelfID)).FirstOrDefaultAsync();
             shelf.slfName = shelfName;
@@ -76,6 +90,10 @@ namespace Library {
 
             var books = await connection.Table<Book>().Where(b => b.slfID.Equals(shelfID)).ToListAsync();
             foreach (var book in books) RemoveBook(book);
+        }
+
+        public static async Task<bool> CheckIfBookExists(long bookISBN) {
+            return (await connection.Table<Book>().Where(b => b.booISBN.Equals(bookISBN)).CountAsync() > 0);
         }
     }
 }

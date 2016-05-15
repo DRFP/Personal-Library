@@ -7,7 +7,34 @@
         mc:Ignorable="d"
         Title="Dashboard" Width="1200" Height="620" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
 
-    <Grid x:Name="grdBase">
+    <Window.Resources>
+        <Storyboard x:Key="MoveToUp">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                              Storyboard.TargetName="grdNewShelf">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.3" Value="14,552,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MoveToBottom">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                              Storyboard.TargetName="grdNewShelf">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.3" Value="14,620,0,-68"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MoveToLeft">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" 
+                                              Storyboard.TargetName="grdBookInformation">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.3" Value="706,28,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MoveToRight">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" 
+                                              Storyboard.TargetName="grdBookInformation">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.3" Value="1200,28,-494,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Grid x:Name="grdBase" KeyDown="grdBase_KeyDown">
         <Grid x:Name="grdMenu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="258" Height="620">
             <Grid.Background>
                 <LinearGradientBrush MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" EndPoint="0.5,1">
@@ -54,8 +81,7 @@
             <WrapPanel x:Name="wplShelves" HorizontalAlignment="Left" VerticalAlignment="Top" Width="229" Height="379"
                        Margin="14,148,0,0"/>
 
-            <Grid x:Name="grdNewShelf" HorizontalAlignment="Left" VerticalAlignment="Top" Width="230" Height="58" Margin="14,552,0,0"
-                  Visibility="Collapsed">
+            <Grid x:Name="grdNewShelf" HorizontalAlignment="Left" VerticalAlignment="Top" Width="230" Height="68" Margin="14,620,0,-68">
                 <TextBlock x:Name="txbNewShelf" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,1,0,0"
                            FontFamily="Calibri Light" FontSize="20" Text="New Shelf" Foreground="White"/>
 
@@ -77,6 +103,58 @@
                           Margin="0,27,0,0" Visibility="Visible">
                 <WrapPanel x:Name="wplSearchedBooks" HorizontalAlignment="Left" VerticalAlignment="Top" Width="922" Height="10000"/>
             </ScrollViewer>
+        </Grid>
+
+        <Grid x:Name="grdShelf" HorizontalAlignment="Left" VerticalAlignment="Top" Width="942" Height="620" Margin="258,0,0,0">
+            <ScrollViewer x:Name="scrShelfBooks" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"
+                          Margin="0,27,0,0" Visibility="Visible">
+                <WrapPanel x:Name="wplShelfBooks" HorizontalAlignment="Left" VerticalAlignment="Top" Width="935" Height="10000"/>
+            </ScrollViewer>
+            <TextBlock x:Name="txbWarning" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,50,0,0" FontSize="29.333"
+                       TextWrapping="Wrap" Text="This shelf is empty (add one or more books by searching for them)!"
+                       Visibility="Collapsed"/>
+        </Grid>
+
+        <Grid x:Name="grdBookInformation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="494" Height="592"
+              Margin="1200,28,-494,0" Visibility="Visible">
+            <Grid.Background>
+                <LinearGradientBrush MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#FF0055D4" Offset="0.102"/>
+                    <GradientStop Color="#FF0055D4" Offset="1"/>
+                    <GradientStop Color="#FF006BC3"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Image x:Name="imgThumbnail" HorizontalAlignment="Left" Height="177" Margin="9,10,0,0" VerticalAlignment="Top" Width="119"
+                   Stretch="Fill"/>
+            <TextBlock x:Name="txbTitle" HorizontalAlignment="Left" Margin="140,4,0,0" TextWrapping="Wrap"
+                       Text="Harry Potter and International Relations" VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="22"
+                       Width="344" Height="88" Foreground="White"/>
+            <TextBlock x:Name="txbDescription" HorizontalAlignment="Left" Margin="140,97,0,0" TextWrapping="Wrap"
+                       Text="Drawing on a range of historical and sociological sources, this work shows how aspects of Harry's world contain..."
+                       VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="14" Width="344" Height="143" TextAlignment="Justify"
+                       Foreground="White"/>
+            <TextBlock x:Name="txbAuthor" HorizontalAlignment="Left" Margin="140,257,0,0" TextWrapping="Wrap" Text="Author: Daniel H. Nexon"
+                       VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="14" Height="18" TextAlignment="Justify" Width="344"
+                       Foreground="White"/>
+            <TextBlock x:Name="txbPublisher" HorizontalAlignment="Left" Margin="140,281,0,0" TextWrapping="Wrap"
+                       Text="Publisher: Rowman and Littlefield" VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="14"
+                       Height="16" TextAlignment="Justify" Width="345" Foreground="White"/>
+            <TextBlock x:Name="txbPublishedDate" HorizontalAlignment="Left" Margin="140,307,0,0" TextWrapping="Wrap"
+                       Text="Published Date: 2006-01-01" VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="14" Height="16"
+                       TextAlignment="Justify" Width="343" Foreground="White"/>
+            <TextBlock x:Name="txbPageCount" HorizontalAlignment="Left" Margin="140,331,0,0" TextWrapping="Wrap" Text="Page Count: 244"
+                       VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="14" Height="18" TextAlignment="Justify" Width="344"
+                       Foreground="White"/>
+            <TextBlock x:Name="txbRating" HorizontalAlignment="Left" Margin="140,356,0,0" TextWrapping="Wrap" Text="Rating: 3.5 (16)"
+                       VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="14" Height="20" TextAlignment="Justify" Width="344"
+                       Foreground="White"/>
+            <TextBlock x:Name="txbInformationLink" HorizontalAlignment="Left" Margin="140,390,0,0" TextWrapping="Wrap" Text="More information | "
+                       VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="14" Width="112" Height="20" TextAlignment="Justify"
+                       Foreground="White"/>
+            <TextBlock x:Name="txbPreviewLink" HorizontalAlignment="Left" Margin="252,391,0,0" TextWrapping="Wrap" Text="Preview"
+                       VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="14" Width="231" Height="20" TextAlignment="Justify"
+                       Foreground="White"/>
         </Grid>
 
         <Image x:Name="imgMinimize" HorizontalAlignment="Left" VerticalAlignment="Top" Width="28" Height="25" Margin="1142,0,0,0"

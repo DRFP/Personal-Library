@@ -3,8 +3,8 @@
 namespace Library.Model {
     [Table("Books")]
     public class Book {
-        [PrimaryKey, AutoIncrement]
-        public int booID { get; set; }
+        [PrimaryKey]
+        public long booISBN { get; set; }
         public int slfID { get; set; }
         public string booTitle { get; set; }
         public string booDescription { get; set; }

@@ -64,5 +64,18 @@ namespace Library {
         }
 
         public static async void AddShelf(string shelfName) { await connection.InsertAsync(new Shelf() { slfName = shelfName }); }
+        public static async void EditShelf(int shelfID, string shelfName) {
+            var shelf = await connection.Table<Shelf>().Where(s => s.slfID.Equals(shelfID)).FirstOrDefaultAsync();
+            shelf.slfName = shelfName;
+            await connection.UpdateAsync(shelf);
+        }
+
+        public static async void RemoveShelf(int shelfID) {
+            var shelf = await connection.Table<Shelf>().Where(s => s.slfID.Equals(shelfID)).FirstOrDefaultAsync();
+            await connection.DeleteAsync(shelf);
+
+            var books = await connection.Table<Book>().Where(b => b.slfID.Equals(shelfID)).ToListAsync();
+            foreach (var book in books) RemoveBook(book);
+        }
     }
 }

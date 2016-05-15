@@ -93,6 +93,16 @@ namespace Library.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap EditShelf {
+            get {
+                object obj = ResourceManager.GetObject("EditShelf", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Minimize {
             get {
                 object obj = ResourceManager.GetObject("Minimize", resourceCulture);
@@ -106,6 +116,19 @@ namespace Library.Properties {
         internal static System.Drawing.Bitmap Minimize_Hover {
             get {
                 object obj = ResourceManager.GetObject("Minimize_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RemoveShelf {
+            get {
+                object obj = ResourceManager.GetObject("RemoveShelf", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

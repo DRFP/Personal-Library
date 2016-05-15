@@ -114,6 +114,8 @@
     <Resource Include="Resources\SearchBox.png" />
     <Resource Include="Resources\ShelfBox.png" />
     <Resource Include="Resources\Add.png" />
+    <Resource Include="Resources\EditShelf.png" />
+    <Resource Include="Resources\RemoveShelf.png" />
     <Content Include="sqlite3.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

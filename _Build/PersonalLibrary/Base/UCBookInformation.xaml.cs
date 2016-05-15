@@ -1,5 +1,6 @@
 ﻿using Library.Model;
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -35,7 +36,15 @@ namespace Base {
 
         private async void btnAdd_Click(object sender, RoutedEventArgs e) {
             var shelf = cmbShelves.SelectedItem as ComboBoxItem;
-            if (shelf != null) await AddBook(book, int.Parse(shelf.Tag.ToString()));
+            if (shelf != null) {
+                if (!await CheckIfBookExists(book.booISBN))
+                    await AddBook(book, int.Parse(shelf.Tag.ToString()));
+                // else MessageBox.Show("This shelf or another shelf already have this book!");
+            }
         }
+
+        private void txbInformationLink_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e) { Process.Start(book.booInformationLink); }
+
+        private void txbPreviewLink_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e) { Process.Start(book.booPreviewLink); }
     }
 }

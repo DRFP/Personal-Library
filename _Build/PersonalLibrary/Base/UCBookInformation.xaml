@@ -26,10 +26,10 @@
                    FontFamily="Calibri Light" FontSize="14" TextWrapping="Wrap" TextAlignment="Justify"/>
         <TextBlock x:Name="txbInformationLink" HorizontalAlignment="Left" VerticalAlignment="Top" Width="113" Height="20"
                    Margin="754,82,0,0" FontFamily="Calibri Light" FontSize="14" Text="More information | " TextWrapping="Wrap"
-                   TextAlignment="Justify" Foreground="#FF0055D4"/>
+                   TextAlignment="Justify" Foreground="#FF0055D4" MouseUp="txbInformationLink_MouseUp"/>
         <TextBlock x:Name="txbPreviewLink" HorizontalAlignment="Left" VerticalAlignment="Top" Width="46" Height="20" Margin="866,82,0,0"
                    FontFamily="Calibri Light" FontSize="14" Text="Preview" TextWrapping="Wrap" TextAlignment="Justify"
-                   Foreground="#FF0055D4"/>
+                   Foreground="#FF0055D4" MouseUp="txbPreviewLink_MouseUp"/>
         <ComboBox x:Name="cmbShelves" HorizontalAlignment="Left" VerticalAlignment="Top" Width="280" Margin="575,107,0,0"/>
         <Button x:Name="btnAdd" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="22" Margin="860,107,0,0"
                 Content="Add" Click="btnAdd_Click"/>

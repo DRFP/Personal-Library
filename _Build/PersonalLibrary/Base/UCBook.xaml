@@ -5,8 +5,39 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Base"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+             d:DesignWidth="122" d:DesignHeight="180">
 
+    <Grid x:Name="grdBase" Width="122" Height="180" MouseUp="grdBase_MouseUp">
+        <Image x:Name="imgThumbnail" HorizontalAlignment="Left" VerticalAlignment="Top" Width="122" Height="180" Stretch="Fill"/>
+        <Image x:Name="imgRemove" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Margin="87,6,0,0"
+                   Source="/Library;Component/Resources/RemoveBook.png" MouseUp="imgRemove_MouseUp">
+            <Image.Style>
+                <Style TargetType="{x:Type Image}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" Color="White" Opacity="1" BlurRadius="15"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+
+        <Grid.Style>
+            <Style TargetType="{x:Type Grid}">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect ShadowDepth="0" Color="Black" Opacity="1" BlurRadius="30"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>
     </Grid>
 </UserControl>

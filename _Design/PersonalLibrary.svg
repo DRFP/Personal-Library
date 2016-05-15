@@ -26,14 +26,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="-116.89699"
-     inkscape:cy="914.0892"
+     inkscape:zoom="0.42197183"
+     inkscape:cx="372.33252"
+     inkscape:cy="744.20392"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="847"
+     inkscape:window-width="1280"
+     inkscape:window-height="971"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
@@ -130,17 +130,6 @@
        inkscape:export-xdpi="110"
        inkscape:export-ydpi="110" />
     <rect
-       inkscape:export-ydpi="110"
-       inkscape:export-xdpi="110"
-       inkscape:export-filename="C:\Users\nsisadev\Documents\GitHub\Repositories\Personal-Library\_Design\Boxes\ShelfBox.png"
-       ry="12.340842"
-       y="-261.64368"
-       x="126.46033"
-       height="24.681684"
-       width="232.88835"
-       id="rect4216"
-       style="fill:#0044aa;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0" />
-    <rect
        style="fill:#0044aa;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0"
        id="rect4218"
        width="232.88835"
@@ -207,13 +196,76 @@
          x="-209.86134"
          y="168.55823"
          style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Calibri;-inkscape-font-specification:'Calibri Light'">Shelves</tspan></text>
-    <path
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:8, 2;stroke-dashoffset:0"
-       d="m -85.39698,-102.60367 c -5.05636,0 -9.12696,4.0706 -9.12696,9.12696 0,5.05635 4.0706,9.12695 9.12696,9.12695 5.05635,0 9.12695,-4.0706 9.12695,-9.12695 0,-5.05636 -4.0706,-9.12696 -9.12695,-9.12696 z m -0.85718,4.5509 1.71603,0 c 0.15788,0 0.28516,0.12727 0.28516,0.28516 l 0,3.14688 3.14688,0 c 0.15788,0 0.28516,0.12728 0.28516,0.28517 l 0,1.71602 c 0,0.15787 -0.12728,0.28684 -0.28516,0.28684 l -3.14688,0 0,3.1452 c 0,0.15789 -0.12728,0.28684 -0.28516,0.28684 l -1.71603,0 c -0.15788,0 -0.28683,-0.12895 -0.28683,-0.28684 l 0,-3.1452 -3.14689,0 c -0.15788,0 -0.28516,-0.12897 -0.28516,-0.28684 l 0,-1.71602 c 0,-0.15789 0.12728,-0.28517 0.28516,-0.28517 l 3.14689,0 0,-3.14688 c 0,-0.15789 0.12895,-0.28516 0.28683,-0.28516 z"
-       id="rect4242"
-       inkscape:connector-curvature="0"
-       inkscape:export-filename="C:\Users\nsisadev\Documents\GitHub\Repositories\Personal-Library\_Design\Buttons\Add.png"
-       inkscape:export-xdpi="110"
-       inkscape:export-ydpi="110" />
+    <g
+       id="g3374"
+       transform="matrix(0.8460437,0,0,0.8460437,1.7603176,53.202525)">
+      <rect
+         ry="10.828737"
+         y="332.24133"
+         x="-37.907375"
+         height="21.657475"
+         width="21.657475"
+         id="rect3372"
+         style="fill:#ffffff;fill-opacity:1" />
+      <g
+         id="miu"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:none;stroke-width:1"
+         transform="matrix(0.61315066,0,0,0.61315066,-86.58851,336.84147)">
+        <g
+           style="fill:#ffffff"
+           transform="translate(-814.48541,-229.30195)"
+           id="Artboard-1">
+          <g
+             style="fill:#ffffff"
+             transform="translate(215,119)"
+             id="slice" />
+          <path
+             transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,436.73855,-573.38014)"
+             id="editor-pencil-pen-edit-write-glyph"
+             d="m 914.00003,248.00241 4.3e-4,-16 0,0 -6.99911,0 -10e-4,16 6.99995,0 z m -0.002,1 -3.49664,4.99759 -3.49998,-4.99759 6.99662,0 z m 0.002,-18 8e-5,-3 C 914.00057,227 912.99816,227 912.99816,227 l -4.99407,0 c 0,0 -1.00242,0 -1.00242,1.00241 l -2.4e-4,3 6.99906,0 0,0 z"
+             inkscape:connector-curvature="0"
+             style="fill:#0044aa;fill-opacity:1" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="g3384"
+       transform="matrix(0.8460437,0,0,0.8460437,7.7214839,53.202525)">
+      <rect
+         ry="10.828737"
+         y="332.24133"
+         x="-7.4604998"
+         height="21.657475"
+         width="21.657475"
+         id="rect3381"
+         style="fill:#ffffff;fill-opacity:1"
+         transform="translate(-11.896461,0)" />
+      <path
+         id="path3"
+         d="m -6.3772616,343.07002 2.7118596,-2.71197 c 0.4241855,-0.42417 0.4234537,-1.11298 -0.00231,-1.53863 l -0.6101923,-0.61006 c -0.4252829,-0.42541 -1.1143401,-0.4265 -1.5385248,-0.002 l -2.7117381,2.71209 -2.7117378,-2.71185 c -0.424673,-0.42454 -1.113243,-0.4232 -1.538769,0.002 l -0.61007,0.61006 c -0.425526,0.42565 -0.426745,1.11409 -0.0022,1.53864 l 2.71186,2.71184 -2.711617,2.7116 c -0.424551,0.42466 -0.42321,1.11323 0.0022,1.53863 l 0.610071,0.61019 c 0.425648,0.42564 1.114095,0.42686 1.538646,0.002 l 2.7116168,-2.71158 2.7117381,2.71158 c 0.4241847,0.42431 1.1129985,0.42358 1.5385248,-0.002 l 0.6101923,-0.61019 c 0.4252821,-0.42528 0.4263794,-1.11433 0.00231,-1.53851 l -2.7118596,-2.71159 z"
+         style="fill:#0044aa;fill-opacity:1"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="matrix(1.8550588,0,0,1.8550588,77.972214,-607.47439)"
+       id="g3406"
+       inkscape:export-filename="C:\Users\Tester\Documents\GitHub\Repositories\Personal-Library\_Design\Buttons\RemoveBook.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         transform="translate(-11.896461,0)"
+         style="fill:#ff2a2a;fill-opacity:1"
+         id="rect3408"
+         width="21.657475"
+         height="21.657475"
+         x="-7.4604998"
+         y="332.24133"
+         ry="10.828737" />
+      <path
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;fill-opacity:1"
+         d="m -6.3772616,343.07002 2.7118596,-2.71197 c 0.4241855,-0.42417 0.4234537,-1.11298 -0.00231,-1.53863 l -0.6101923,-0.61006 c -0.4252829,-0.42541 -1.1143401,-0.4265 -1.5385248,-0.002 l -2.7117381,2.71209 -2.7117378,-2.71185 c -0.424673,-0.42454 -1.113243,-0.4232 -1.538769,0.002 l -0.61007,0.61006 c -0.425526,0.42565 -0.426745,1.11409 -0.0022,1.53864 l 2.71186,2.71184 -2.711617,2.7116 c -0.424551,0.42466 -0.42321,1.11323 0.0022,1.53863 l 0.610071,0.61019 c 0.425648,0.42564 1.114095,0.42686 1.538646,0.002 l 2.7116168,-2.71158 2.7117381,2.71158 c 0.4241847,0.42431 1.1129985,0.42358 1.5385248,-0.002 l 0.6101923,-0.61019 c 0.4252821,-0.42528 0.4263794,-1.11433 0.00231,-1.53851 l -2.7118596,-2.71159 z"
+         id="path3410" />
+    </g>
   </g>
 </svg>

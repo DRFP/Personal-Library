@@ -96,4 +96,21 @@ namespace Library {
             return (await connection.Table<Book>().Where(b => b.booISBN.Equals(bookISBN)).CountAsync() > 0);
         }
     }
+		public static async Task<int> AddBorrowing(int bookID) {
+			await connection.InsertAsync(new Borrowing() {
+				booID = bookID,
+				borName = "",
+				borDeliverydDate = DateTime.Now,
+				borObservations = "",
+				borBorrowed = false
+			});
+
+			return 0;
+		}
+		public static async Task<Borrowing> GetBorrowing(int bookID) {
+			return await connection.Table<Borrowing>().Where(b => b.booID.Equals(bookID)).FirstOrDefaultAsync();
+		}
+		private async static void RemoveBorrowing(Borrowing borrowing) {
+			await connection.DeleteAsync(borrowing);
+		}
 }

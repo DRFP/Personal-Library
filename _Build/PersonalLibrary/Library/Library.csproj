@@ -84,6 +84,7 @@
     <Compile Include="API.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="Model\Borrowing.cs" />
     <Compile Include="Model\Book.cs" />
     <Compile Include="Model\Shelf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

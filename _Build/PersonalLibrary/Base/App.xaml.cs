@@ -4,11 +4,11 @@ using static Library.Configuration;
 using static Library.SQLiteManager;
 
 namespace Base {
-    public partial class App : Application {
-        public App() { Configure(); }
+	public partial class App : Application {
+		public App() { Configure(); }
 
-        private async void Configure() {
-            if (!File.Exists(databaseName)) await CreateDatabase();
-        }
-    }
+		private async void Configure() {
+			if (!File.Exists(databaseName)) await CreateDatabase();
+		}
+	}
 }

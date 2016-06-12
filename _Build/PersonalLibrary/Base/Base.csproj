@@ -65,6 +65,9 @@
     <Compile Include="UCBookInformation.xaml.cs">
       <DependentUpon>UCBookInformation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UCRating.xaml.cs">
+      <DependentUpon>UCRating.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UCShelf.xaml.cs">
       <DependentUpon>UCShelf.xaml</DependentUpon>
     </Compile>
@@ -97,6 +100,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UCBookInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UCRating.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

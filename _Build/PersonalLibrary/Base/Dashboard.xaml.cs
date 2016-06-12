@@ -12,136 +12,169 @@ using static Library.API;
 using static Library.Configuration;
 
 namespace Base {
-    public partial class Dashboard : Window {
-        private bool editShelf, removeShelf, removeBook;
-        private int shelfID;
+	public partial class Dashboard : Window {
+		private static SQLiteAsyncConnection connection = new SQLiteAsyncConnection(databaseName);
+		private bool editShelf, removeShelf, removeBook, categoryUnknownExists;
+		private List<string> categories = new List<string>();
+		private UCShelf currentShelf;
+		private UCBook currentBook;
+		private int shelfID;
 
-        public Dashboard() {
-            InitializeComponent();
-            LoadShelves();
-        }
+		public Dashboard() {
+			InitializeComponent();
+			LoadShelves();
+			ratRating.onClick += ratRating_onClick;
+		}
 
-        private async void tbxSearch_KeyDown(object sender, KeyEventArgs e) {
-            grdShelf.Visibility = Visibility.Collapsed;
-            grdSearchResults.Visibility = Visibility.Visible;
+		private async void ratRating_onClick(UCRating ucRating) {
+			var book = await connection.Table<Book>().Where(b => b.booID.Equals(currentBook.book.booID)).FirstOrDefaultAsync();
+			book.booRating = ucRating.RatingValue;
+			List<Book> books;
+			await connection.UpdateAsync(book);
 
-            if (wplSearchedBooks.Children.Count > 0) wplSearchedBooks.Children.Clear();
-            if (e.Key == Key.Enter && tbxSearch.Text != string.Empty) {
-                var books = await GetSearchedBooks(tbxSearch.Text);
-                foreach (var book in books) {
-                    var ucBookInformation = new UCBookInformation(book);
-                    wplSearchedBooks.Children.Add(ucBookInformation);
-                }
-            }
-        }
+			if (cmbCategories.ItemsSource != null) {
+				if (cmbCategories.SelectedValue != null)
+					books = await GetBooks(currentShelf.id, cmbCategories.SelectedValue.ToString());
+				else
+					books = await GetBooks(currentShelf.id, null);
 
-        private async void LoadShelves() {
-            var shelves = await GetShelves();
-            wplShelves.Children.Clear();
+				wplShelfBooks.Children.Clear();
+				grdSearchResults.Visibility = Visibility.Collapsed;
+				grdShelf.Visibility = Visibility.Visible;
 
-            foreach (var shelf in shelves) {
-                var ucShelf = new UCShelf(shelf.slfID, shelf.slfName);
-                ucShelf.onClick += ucShelf_onClick;
-                ucShelf.onClickEdit += ucShelf_onClickEdit;
-                ucShelf.onClickRemove += ucShelf_onClickRemove;
-                wplShelves.Children.Add(ucShelf);
-            }
-        }
+				if (books != null) {
+					txbWarning.Visibility = Visibility.Collapsed;
+					foreach (var _book in books) {
+						var ucBook = new UCBook(_book);
+						ucBook.onClick += ucBook_onClick;
+						ucBook.onClickRemove += ucBook_onClickRemove;
+						wplShelfBooks.Children.Add(ucBook);
+					}
+				}
+				else txbWarning.Visibility = Visibility.Visible;
+			}
 
-        private async void ucShelf_onClick(UCShelf ucShelf) {
-            var books = await GetBooks(ucShelf.id);
+			txbRating.Text = $"Your Rating: {book.booRating} (1-5)";
+		}
 
-            if (!removeShelf) {
-                wplShelfBooks.Children.Clear();
-                grdSearchResults.Visibility = Visibility.Collapsed;
-                grdShelf.Visibility = Visibility.Visible;
+		private async void tbxSearch_KeyDown(object sender, KeyEventArgs e) {
+			if (e.Key == Key.Enter) {
+				grdShelf.Visibility = Visibility.Collapsed;
+				cmbCategories.Visibility = Visibility.Collapsed;
+				grdSearchResults.Visibility = Visibility.Visible;
 
-                if (books != null) {
-                    txbWarning.Visibility = Visibility.Collapsed;
-                    foreach (var book in books) {
-                        var ucBook = new UCBook(book);
-                        ucBook.onClick += ucBook_onClick;
-                        ucBook.onClickRemove += ucBook_onClickRemove;
-                        wplShelfBooks.Children.Add(ucBook);
-                    }
-                }
-                else txbWarning.Visibility = Visibility.Visible;
-            }
+				if (wplSearchedBooks.Children.Count > 0) wplSearchedBooks.Children.Clear();
+				if (e.Key == Key.Enter && tbxSearch.Text != string.Empty) {
+					var books = await GetSearchedBooks(tbxSearch.Text);
+					foreach (var book in books) {
+						var ucBookInformation = new UCBookInformation(book);
+						wplSearchedBooks.Children.Add(ucBookInformation);
+					}
+				}
+			}
+		}
 
-            removeShelf = false;
-        }
+		private async void LoadShelves() {
+			var shelves = await GetShelves();
+			wplShelves.Children.Clear();
 
-        private void ucShelf_onClickEdit(UCShelf ucShelf) {
-            grdNewShelf.Visibility = Visibility.Visible;
-            txbNewShelf.Text = "Edit Shelf";
-            tbxNewShelf.Text = "Write here the new shelf name...";
-            ((Storyboard)Resources["MoveToUp"]).Begin();
-            editShelf = true;
-            shelfID = ucShelf.id;
-        }
+			foreach (var shelf in shelves) {
+				var ucShelf = new UCShelf(shelf.slfID, shelf.slfName);
+				ucShelf.onClick += ucShelf_onClick;
+				ucShelf.onClickEdit += ucShelf_onClickEdit;
+				ucShelf.onClickRemove += ucShelf_onClickRemove;
+				wplShelves.Children.Add(ucShelf);
+			}
+		}
 
-        private void ucShelf_onClickRemove(UCShelf ucShelf) {
-            ((Storyboard)Resources["MoveToBottom"]).Begin();
-            RemoveShelf(ucShelf.id);
-            wplShelves.Children.Remove(ucShelf);
-            wplShelfBooks.Children.Clear();
-            removeShelf = true;
-        }
+		private async void ucShelf_onClick(UCShelf ucShelf) {
+			var books = await GetBooks(ucShelf.id, null);
+			cmbCategories.ItemsSource = null;
+			categories.Clear();
 
-        private void ucBook_onClick(UCBook ucBook) {
-            imgThumbnail.Source = new BitmapImage(new Uri(ucBook.book.booThumbnail));
+			if (books.Count > 0)
+				categories.Add("All");
 
-            txbTitle.Text = ucBook.book.booTitle;
-            txbDescription.Text = ucBook.book.booDescription;
-            txbAuthor.Text = $"Author: {ucBook.book.booAuthor}";
-            txbPublisher.Text = $"Publisher: {ucBook.book.booPublisher}";
-            txbPublishedDate.Text = $"Published Date: {ucBook.book.booPublishedDate}";
-            txbPageCount.Text = $"Page Count: {ucBook.book.booPageCount}";
-            txbRating.Text = $"Rating: {ucBook.book.booRating} ({ucBook.book.booRatingsCount})";
+			foreach (var book in books) {
+				if (book.booCategory != "Unknown")
+					categories.Add(book.booCategory);
+				else
+					categoryUnknownExists = true;
+			}
 
-            if (removeBook) ((Storyboard)Resources["MoveToRight"]).Begin();
-            else ((Storyboard)Resources["MoveToLeft"]).Begin();
+			if (categoryUnknownExists)
+				categories.Add("Unknown");
 
-            removeBook = false;
-        }
+			categories = categories.Distinct().ToList();
+			categoryUnknownExists = false;
+			cmbCategories.ItemsSource = categories;
 
-        private void ucBook_onClickRemove(UCBook ucBook) {
-            RemoveBook(ucBook.book);
-            wplShelfBooks.Children.Remove(ucBook);
-            removeBook = true;
-        }
+			if (!removeShelf) {
+				wplShelfBooks.Children.Clear();
+				grdSearchResults.Visibility = Visibility.Collapsed;
+				grdShelf.Visibility = Visibility.Visible;
 
-        private void imgAddShelf_MouseUp(object sender, MouseButtonEventArgs e) {
-            grdNewShelf.Visibility = Visibility.Visible;
-            txbNewShelf.Text = "New Shelf";
-            tbxNewShelf.Text = "Write here the new shelf name...";
-            ((Storyboard)Resources["MoveToUp"]).Begin();
-        }
+				if (books != null) {
+					txbWarning.Visibility = Visibility.Collapsed;
+					foreach (var book in books) {
+						var ucBook = new UCBook(book);
+						ucBook.onClick += ucBook_onClick;
+						ucBook.onClickRemove += ucBook_onClickRemove;
+						wplShelfBooks.Children.Add(ucBook);
+					}
+				}
+				else txbWarning.Visibility = Visibility.Visible;
+			}
 
-        private void tbxNewShelf_KeyDown(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Enter) {
-                if (!editShelf) AddShelf(tbxNewShelf.Text);
-                else EditShelf(shelfID, tbxNewShelf.Text);
+			currentShelf = ucShelf;
+			removeShelf = false;
 
-                grdNewShelf.Visibility = Visibility.Collapsed;
-                editShelf = false;
-            }
-        }
+			if (cmbCategories.Items.Count != 0) {
+				cmbCategories.Visibility = Visibility.Visible;
+				cmbCategories.SelectedIndex = 0;
+			}
+			else
+				cmbCategories.Visibility = Visibility.Hidden;
+		}
 
-        private void grdBase_KeyDown(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Escape) {
-                if (grdNewShelf.Margin == new Thickness(14, 552, 0, 0)) ((Storyboard)Resources["MoveToBottom"]).Begin();
-                if (grdBookInformation.Margin == new Thickness(706, 28, 0, 0)) ((Storyboard)Resources["MoveToRight"]).Begin();
-            }
-            else if (e.Key == Key.Enter) LoadShelves();
-        }
+		private void ucShelf_onClickEdit(UCShelf ucShelf) {
+			grdNewShelf.Visibility = Visibility.Visible;
+			txbNewShelf.Text = "Edit Shelf";
+			tbxNewShelf.Text = "Write here the new shelf name...";
+			((Storyboard)Resources["MoveNewShelfToUp"]).Begin();
+			editShelf = true;
+			shelfID = ucShelf.id;
+		}
 
-        private void imgMinimize_MouseUp(object sender, MouseButtonEventArgs e) { WindowState = WindowState.Minimized; }
+		private void ucShelf_onClickRemove(UCShelf ucShelf) {
+			((Storyboard)Resources["MoveNewShelfToDown"]).Begin();
+			RemoveShelf(ucShelf.id);
+			wplShelves.Children.Remove(ucShelf);
+			wplShelfBooks.Children.Clear();
+			removeShelf = true;
+		}
 
-        private void imgClose_MouseUp(object sender, MouseButtonEventArgs e) { Environment.Exit(0); }
-    }
+		private async void ucBook_onClick(UCBook ucBook) {
+			imgThumbnail.Source = new BitmapImage(new Uri(ucBook.book.booThumbnail));
+			txbTitle.Tag = ucBook.book.booID;
+			txbTitle.Text = ucBook.book.booTitle;
+			txbDescription.Text = ucBook.book.booDescription;
+			txbAuthor.Text = $"Author: {ucBook.book.booAuthor}";
+			txbPublisher.Text = $"Publisher: {ucBook.book.booPublisher}";
+			txbPublishedDate.Text = $"Published Date: {ucBook.book.booPublishedDate}";
+			txbPageCount.Text = $"Page Count: {ucBook.book.booPageCount}";
+			txbRating.Text = $"Your Rating: {ucBook.book.booRating} (1-5)";
+			ratRating.RatingValue = ucBook.book.booRating;
+			tbxNotes.Text = ucBook.book.booNotes;
+			currentBook = ucBook;
+
+			if (removeBook) {
+				((Storyboard)Resources["MoveBookInformationToRight"]).Begin();
 				((Storyboard)Resources["MoveBorrowInformationToDown"]).Begin();
+			}
+			else
 				((Storyboard)Resources["MoveBookInformationToLeft"]).Begin();
+
 			txbBorrowingTitle.Text = currentBook.book.booTitle;
 			var borrowing = await GetBorrowing(currentBook.book.booID);
 
@@ -161,7 +194,47 @@ namespace Base {
 			tbxName.Text = borrowing.borName;
 			dtpDeliveryDate.SelectedDate = borrowing.borDeliverydDate;
 			tbxObservations.Text = borrowing.borObservations;
+
+			removeBook = false;
+		}
+
+		private void ucBook_onClickRemove(UCBook ucBook) {
+			RemoveBook(ucBook.book);
+			wplShelfBooks.Children.Remove(ucBook);
+			removeBook = true;
+		}
+
+		private void imgAddShelf_MouseUp(object sender, MouseButtonEventArgs e) {
+			grdNewShelf.Visibility = Visibility.Visible;
+			txbNewShelf.Text = "New Shelf";
+			tbxNewShelf.Text = "Write here the new shelf name...";
+			((Storyboard)Resources["MoveNewShelfToUp"]).Begin();
+		}
+
+		private async void tbxNewShelf_KeyDown(object sender, KeyEventArgs e) {
+			if (e.Key == Key.Enter) {
+				if (!editShelf)
+					AddShelf(tbxNewShelf.Text);
+				else {
+					var shelf = await connection.Table<Shelf>().Where(s => s.slfID.Equals(shelfID)).FirstOrDefaultAsync();
+					shelf.slfName = tbxNewShelf.Text;
+					await connection.UpdateAsync(shelf);
+				}
+
+				LoadShelves();
+				grdNewShelf.Visibility = Visibility.Collapsed;
+				editShelf = false;
+			}
+		}
+
+		private void grdBase_KeyDown(object sender, KeyEventArgs e) {
+			if (e.Key == Key.Escape) {
+				if (grdNewShelf.Margin == new Thickness(14, 552, 0, 0)) ((Storyboard)Resources["MoveNewShelfToDown"]).Begin();
+				if (grdBookInformation.Margin == new Thickness(706, 25, 0, 0)) ((Storyboard)Resources["MoveBookInformationToRight"]).Begin();
 				if (grdBorrowInformation.Margin == new Thickness(281, 200, 0, 0)) ((Storyboard)Resources["MoveBorrowInformationToDown"]).Begin();
+			}
+		}
+
 		private void btnEditNotes_Click(object sender, RoutedEventArgs e) {
 			btnSaveNotes.Visibility = Visibility.Visible;
 			tbxNotes.IsEnabled = true;
@@ -205,8 +278,40 @@ namespace Base {
 		private void btnCloseThisPanel_Click(object sender, RoutedEventArgs e) {
 			((Storyboard)Resources["MoveBorrowInformationToDown"]).Begin();
 		}
+
+		private void txbInformationLink_MouseUp(object sender, MouseButtonEventArgs e) {
+			Process.Start(currentBook.book.booInformationLink);
+		}
+
+		private void txbPreviewLink_MouseUp(object sender, MouseButtonEventArgs e) {
+			Process.Start(currentBook.book.booPreviewLink);
+		}
+
+		private async void cmbCategories_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+			if (cmbCategories.ItemsSource != null) {
+				var books = await GetBooks(currentShelf.id, cmbCategories.SelectedValue.ToString());
+
+				wplShelfBooks.Children.Clear();
+				grdSearchResults.Visibility = Visibility.Collapsed;
+				grdShelf.Visibility = Visibility.Visible;
+
+				if (books != null) {
+					txbWarning.Visibility = Visibility.Collapsed;
+					foreach (var book in books) {
+						var ucBook = new UCBook(book);
+						ucBook.onClick += ucBook_onClick;
+						ucBook.onClickRemove += ucBook_onClickRemove;
+						wplShelfBooks.Children.Add(ucBook);
+					}
+				}
+				else
+					txbWarning.Visibility = Visibility.Visible;
+
 				((Storyboard)Resources["MoveBookInformationToRight"]).Begin();
 				((Storyboard)Resources["MoveBorrowInformationToDown"]).Begin();
+			}
+		}
+
 		private async void btnBorrow_Click(object sender, RoutedEventArgs e) {
 			var borrowing = await connection.Table<Borrowing>().Where(b => b.booID.Equals(currentBook.book.booID)).FirstOrDefaultAsync();
 			borrowing.borName = tbxName.Text;
@@ -264,4 +369,13 @@ namespace Base {
 			dtpDeliveryDate.SelectedDate = _borrowing.borDeliverydDate;
 			tbxObservations.Text = _borrowing.borObservations;
 		}
+
+		private void imgMinimize_MouseUp(object sender, MouseButtonEventArgs e) {
+			WindowState = WindowState.Minimized;
+		}
+
+		private void imgClose_MouseUp(object sender, MouseButtonEventArgs e) {
+			Environment.Exit(0);
+		}
+	}
 }

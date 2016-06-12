@@ -1,9 +1,15 @@
-﻿using System;
+﻿using Library.Model;
+using SQLite;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using static Library.API;
+using static Library.Configuration;
 
 namespace Base {
     public partial class Dashboard : Window {
@@ -134,4 +140,128 @@ namespace Base {
 
         private void imgClose_MouseUp(object sender, MouseButtonEventArgs e) { Environment.Exit(0); }
     }
+				((Storyboard)Resources["MoveBorrowInformationToDown"]).Begin();
+				((Storyboard)Resources["MoveBookInformationToLeft"]).Begin();
+			txbBorrowingTitle.Text = currentBook.book.booTitle;
+			var borrowing = await GetBorrowing(currentBook.book.booID);
+
+			if (borrowing.borBorrowed) {
+				tbxName.IsEnabled = false;
+				dtpDeliveryDate.IsEnabled = false;
+				tbxObservations.IsEnabled = false;
+				btnIAlreadyReceivedTheBook.Visibility = Visibility.Visible;
+			}
+			else {
+				tbxName.IsEnabled = true;
+				dtpDeliveryDate.IsEnabled = true;
+				tbxObservations.IsEnabled = true;
+				btnIAlreadyReceivedTheBook.Visibility = Visibility.Hidden;
+			}
+
+			tbxName.Text = borrowing.borName;
+			dtpDeliveryDate.SelectedDate = borrowing.borDeliverydDate;
+			tbxObservations.Text = borrowing.borObservations;
+				if (grdBorrowInformation.Margin == new Thickness(281, 200, 0, 0)) ((Storyboard)Resources["MoveBorrowInformationToDown"]).Begin();
+		private void btnEditNotes_Click(object sender, RoutedEventArgs e) {
+			btnSaveNotes.Visibility = Visibility.Visible;
+			tbxNotes.IsEnabled = true;
+		}
+
+		private async void btnSaveNotes_Click(object sender, RoutedEventArgs e) {
+			btnSaveNotes.Visibility = Visibility.Hidden;
+			tbxNotes.IsEnabled = false;
+			int bookID = int.Parse(txbTitle.Tag.ToString());
+			var book = await connection.Table<Book>().Where(b => b.booID.Equals(bookID)).FirstOrDefaultAsync();
+			List<Book> books;
+			book.booNotes = tbxNotes.Text;
+			await connection.UpdateAsync(book);
+			if (cmbCategories.ItemsSource != null) {
+				if (cmbCategories.SelectedValue != null)
+					books = await GetBooks(currentShelf.id, cmbCategories.SelectedValue.ToString());
+				else
+					books = await GetBooks(currentShelf.id, null);
+
+				wplShelfBooks.Children.Clear();
+				grdSearchResults.Visibility = Visibility.Collapsed;
+				grdShelf.Visibility = Visibility.Visible;
+
+				if (books != null) {
+					txbWarning.Visibility = Visibility.Collapsed;
+					foreach (var _book in books) {
+						var ucBook = new UCBook(_book);
+						ucBook.onClick += ucBook_onClick;
+						ucBook.onClickRemove += ucBook_onClickRemove;
+						wplShelfBooks.Children.Add(ucBook);
+					}
+				}
+				else txbWarning.Visibility = Visibility.Visible;
+			}
+		}
+
+		private void btnBorrowInformation_Click(object sender, RoutedEventArgs e) {
+			((Storyboard)Resources["MoveBorrowInformationToUp"]).Begin();
+		}
+
+		private void btnCloseThisPanel_Click(object sender, RoutedEventArgs e) {
+			((Storyboard)Resources["MoveBorrowInformationToDown"]).Begin();
+		}
+				((Storyboard)Resources["MoveBookInformationToRight"]).Begin();
+				((Storyboard)Resources["MoveBorrowInformationToDown"]).Begin();
+		private async void btnBorrow_Click(object sender, RoutedEventArgs e) {
+			var borrowing = await connection.Table<Borrowing>().Where(b => b.booID.Equals(currentBook.book.booID)).FirstOrDefaultAsync();
+			borrowing.borName = tbxName.Text;
+			borrowing.borDeliverydDate = dtpDeliveryDate.SelectedDate.Value.Date;
+			borrowing.borObservations = tbxObservations.Text;
+			borrowing.borBorrowed = true;
+			await connection.UpdateAsync(borrowing);
+
+			txbBorrowingTitle.Text = currentBook.book.booTitle;
+			var _borrowing = await GetBorrowing(currentBook.book.booID);
+
+			if (_borrowing.borBorrowed) {
+				tbxName.IsEnabled = false;
+				dtpDeliveryDate.IsEnabled = false;
+				tbxObservations.IsEnabled = false;
+				btnIAlreadyReceivedTheBook.Visibility = Visibility.Visible;
+			}
+			else {
+				tbxName.IsEnabled = true;
+				dtpDeliveryDate.IsEnabled = true;
+				tbxObservations.IsEnabled = true;
+				btnIAlreadyReceivedTheBook.Visibility = Visibility.Hidden;
+			}
+
+			tbxName.Text = _borrowing.borName;
+			dtpDeliveryDate.SelectedDate = _borrowing.borDeliverydDate;
+			tbxObservations.Text = _borrowing.borObservations;
+		}
+
+		private async void btnIAlreadyReceivedTheBook_Click(object sender, RoutedEventArgs e) {
+			Borrowing borrowing = await connection.Table<Borrowing>().Where(b => b.booID.Equals(currentBook.book.booID)).FirstOrDefaultAsync();
+			borrowing.borName = "";
+			borrowing.borDeliverydDate = DateTime.Now.Date;
+			borrowing.borObservations = "";
+			borrowing.borBorrowed = false;
+			await connection.UpdateAsync(borrowing);
+
+			txbBorrowingTitle.Text = currentBook.book.booTitle;
+			var _borrowing = await GetBorrowing(currentBook.book.booID);
+
+			if (_borrowing.borBorrowed) {
+				tbxName.IsEnabled = false;
+				dtpDeliveryDate.IsEnabled = false;
+				tbxObservations.IsEnabled = false;
+				btnIAlreadyReceivedTheBook.Visibility = Visibility.Visible;
+			}
+			else {
+				tbxName.IsEnabled = true;
+				dtpDeliveryDate.IsEnabled = true;
+				tbxObservations.IsEnabled = true;
+				btnIAlreadyReceivedTheBook.Visibility = Visibility.Hidden;
+			}
+
+			tbxName.Text = _borrowing.borName;
+			dtpDeliveryDate.SelectedDate = _borrowing.borDeliverydDate;
+			tbxObservations.Text = _borrowing.borObservations;
+		}
 }
